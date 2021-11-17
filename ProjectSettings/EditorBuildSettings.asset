@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/VR Beginner/Scenes/Final/EscapeRoom.unity
+    guid: 0f290611f0f8be4419d06b71aba4e36a
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 398d945149746a94899cafbfeddf8c9f,
+      type: 2}
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 60c803a9be2cc9342be3d9bdde6a760e,
+      type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: a2d94e44418c7784e8112bdd021b44e5,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a422e2a2e6c83184e9b23d6413331359,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 41e702c4730689a4e80b3d46cc028042,
+      type: 2}
