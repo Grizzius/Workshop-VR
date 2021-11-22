@@ -9,7 +9,7 @@ public class UIOptionMenuScript : MonoBehaviour
     public GameObject DefaultMenu;
     private void OnEnable()
     {
-        SwapOption(DefaultMenu);
+
     }
     public void SwapOption(GameObject NewOptionMenu)
     {

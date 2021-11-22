@@ -5,11 +5,11 @@ using UnityEngine;
 public class SoundManagerScript : MonoBehaviour
 {
 
-    [Header("Clips")]
+    [Header("Audio")]
     public AudioClip[] BgmPlaylist;
     public int MinimumTimeBeforeNextBGM;
     public int MaximumTimeBeforeNextBGM;
-    bool bWaitForBGM;
+    public float BgmFadeInDuration;
     public AudioClip BGS;
 
     [Header("Components")]
@@ -24,6 +24,8 @@ public class SoundManagerScript : MonoBehaviour
     public string BGMVolumeOptionName = "BGM Volume";
     public string BGSVolumeOptionName = "BGS Volume";
     public string GeneralVolumeOptionName = "General Volume";
+
+    bool bWaitForBGM;
     void Start()
     {
         BgmPlayer.loop = false;
@@ -44,7 +46,7 @@ public class SoundManagerScript : MonoBehaviour
             StartCoroutine(Waiter(Random.Range(MinimumTimeBeforeNextBGM, MaximumTimeBeforeNextBGM)));
         }
     }
-
+    //Fonctions pour changer le volume du son
     public void SetGeneralVolume(float GeneralVolume)
     {
         AudioListener.volume = GeneralVolume;
@@ -59,24 +61,47 @@ public class SoundManagerScript : MonoBehaviour
         BgsPlayer.volume = BgsVolume;
     }
 
-    public void ChangeGlobalVolume(float GlobalVolume)
+    //Fonction pour jouer une musique
+    public void PlayMusic(AudioClip BGM)
     {
-        AudioListener.volume = GlobalVolume;
-    }
-
-    private AudioClip GetRandomBGM()
-    {
-        return BgmPlaylist[Random.Range(0, BgmPlaylist.Length)];
-    }
-
-    IEnumerator Waiter(int waitTime)
-    {
-        bWaitForBGM = true;
-        Debug.Log("StartCoroutine");
-        yield return new WaitForSeconds(waitTime);
-        BgmPlayer.clip = GetRandomBGM();
+        StartCoroutine(FadeAudioVolume(BgmPlayer, BgmFadeInDuration));
+        BgmPlayer.clip = BGM;
         BgmPlayer.Play();
         SetBGMVolume(BgmVolume);
         bWaitForBGM = false;
     }
+
+
+    //Sélectionne une musique aléatoire dans la playlist
+    public AudioClip GetRandomBGM()
+    {
+        return BgmPlaylist[Random.Range(0, BgmPlaylist.Length)];
+    }
+
+    //Contrôle le fondu de l'audio
+    IEnumerator FadeAudioVolume(AudioSource audioSource, float duration)
+    {
+        audioSource.volume = 0f;
+        float timer = 0f;
+        float currentVolume = audioSource.volume;
+        float targetValue = Mathf.Clamp(BgmVolume, 0f, 1f);
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            var newVolume = Mathf.Lerp(currentVolume, targetValue, timer / duration);
+            audioSource.volume = newVolume;
+            yield return null;
+        }
+    }
+
+    //Contrôle le temps d'attente entre les musiques
+    IEnumerator Waiter(int waitTime)
+    {
+        bWaitForBGM = true;
+        yield return new WaitForSeconds(waitTime);
+        PlayMusic(GetRandomBGM());
+    }
+
+
 }
