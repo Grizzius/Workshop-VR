@@ -9,6 +9,7 @@ public class UIChatScript : MonoBehaviour
     [SerializeField] Scrollbar scrollBar;
     [SerializeField] GameObject partnerTextBox;
     [SerializeField] GameObject playerTextBox;
+    [SerializeField] AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,8 @@ public class UIChatScript : MonoBehaviour
         UIChatboxScript chatBoxScript = newPartnerTextBox.GetComponent<UIChatboxScript>();
         chatBoxScript.textBoxText = text;
         setScrollValueToZero();
+        audioSource.Play();
+
     }
     public void SendPlayerTextBox(string text)
     {

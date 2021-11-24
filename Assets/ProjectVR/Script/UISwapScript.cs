@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UISwapScript : MonoBehaviour
 {
-    public GameObject DefaultMenu;
+    [SerializeField] GameObject DefaultMenu;
     GameObject activeMenu;
     private void Start()
     {
@@ -17,5 +17,6 @@ public class UISwapScript : MonoBehaviour
         activeMenu.SetActive(false);
         activeMenu = newActiveMenu;
         activeMenu.SetActive(true);
+        Debug.Log(activeMenu.activeSelf);
     }
 }

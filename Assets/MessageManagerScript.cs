@@ -6,7 +6,6 @@ public class MessageManagerScript : MonoBehaviour
 {
     public UIChatScript chatCanvas;
     public string[] startMessage;
-    [SerializeField]AudioSource audioSource;
 
     private void Start()
     {
@@ -24,7 +23,6 @@ public class MessageManagerScript : MonoBehaviour
 
         Debug.Log("Sending a new message");
         chatCanvas.SendPartnerTextBox(text);
-        audioSource.Play();
     }
 
     public void SendPlayerMessage(string text)
