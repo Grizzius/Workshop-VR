@@ -30,6 +30,14 @@ public class SoundManagerScript : MonoBehaviour
     {
         BgmPlayer.loop = false;
         BgsPlayer.loop = true;
+        if (PlayerPrefs.HasKey(BGMVolumeOptionName))
+        {
+            BgsVolume = PlayerPrefs.GetFloat(BGMVolumeOptionName);
+        }
+        if (PlayerPrefs.HasKey(BGSVolumeOptionName))
+        {
+            BgsVolume = PlayerPrefs.GetFloat(BGSVolumeOptionName);
+        }
     }
 
     void Update()
