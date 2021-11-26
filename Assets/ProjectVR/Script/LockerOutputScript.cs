@@ -6,14 +6,8 @@ public class LockerOutputScript : MonoBehaviour
 {
     public int lockValue;
     // Start is called before the first frame update
-    void Start()
+    public void skip()
     {
-        Mathf.Clamp(lockValue, -1, 1);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        lockValue = 1;
     }
 }

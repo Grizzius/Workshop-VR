@@ -98,6 +98,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: clefauto
       objectReference: {fileID: 0}
+    - target: {fileID: 4535642302539100647, guid: 1ea0e215f3abafe4db44f170fc13c430,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e543bf5fa782c804f932aa1b8355942c, type: 2}
     - target: {fileID: 7467597530506236796, guid: 1ea0e215f3abafe4db44f170fc13c430,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -6,6 +6,7 @@ public class LockerScript : MonoBehaviour
 {
     [SerializeField] LockerDiodeScript[] diodeList;
     [SerializeField] GameObject door;
+    [SerializeField] GameObject cockpitTPArea;
     int unlockedNumber;
 
     public void TestIfUnlocked()
@@ -30,6 +31,7 @@ public class LockerScript : MonoBehaviour
         {
             Debug.Log("door oppened");
             door.SetActive(false);
+            cockpitTPArea.SetActive(true);
         }
     }
 }
